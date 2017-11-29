@@ -17,7 +17,9 @@ public class Game {
     public void init(){
 
 
-        gameImages.loadImages();
+        //for(int i=0;i<gameImages.getBackground().length;i++){
+          //  gameImages.getBackground()[i].draw();
+        //}
 
 
     }
@@ -27,12 +29,13 @@ public class Game {
         while(true){
 
             // TESTE
-            Thread.sleep(200);
+            Thread.sleep(30);
 
             //For the menu
             if(level==0){
                 gameMenu.keyListener();
                 level=gameMenu.getStartLevel();
+                gameMenu.imageRoll();
             }
 
             if(level==1){

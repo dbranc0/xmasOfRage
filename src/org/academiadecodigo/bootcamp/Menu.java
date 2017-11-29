@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp;
 
+import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -11,14 +12,38 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Menu implements KeyboardHandler{
 
     private Picture menu;
+    private Picture menu1;
     private int startLevel=0;
+    private int roll=0;
+
 
     //Calls the menu and create it in the constructor
     public Menu(){
         //MUDAR ISTO DEPOIS
-        this.menu=new Picture(UploadImages.PADDING,UploadImages.PADDING,"background/frame_00_delay-0.04s.gif");
+        this.menu=new Picture(0,UploadImages.PADDING,"background/java.png");
+        this.menu1=new Picture(0,UploadImages.PADDING,"background/java1.png");
+
         menu.draw();
 
+
+    }
+
+    public void imageRoll(){
+        if(menu.getMaxX()< 810 && menu.getX()>-960 ){
+            this.menu1=new Picture(menu.getMaxX(),UploadImages.PADDING,"background/java1.png");
+            menu1.draw();
+            menu.translate(-10,0);
+            menu1.translate(-10,0);
+            System.out.println(menu1.getX());
+        }else if(menu1.getMaxX()<10){
+            this.menu=new Picture(menu1.getMaxX(),UploadImages.PADDING,"background/java.png");
+            menu.draw();
+            menu.translate(-10,0);
+            menu1.translate(-10,0);
+
+            }else{
+            menu.translate(-10,0);
+        }
     }
 
 

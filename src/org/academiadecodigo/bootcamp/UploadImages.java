@@ -4,34 +4,29 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class UploadImages {
 
-    public static final int PADDING=10;
-    private Picture [] background;
+    public static final int PADDING=0;
+    private Picture [] background=new Picture[43];
     private Picture [] player;
     private Picture [] enemy;
     private Picture ground;
 
     //Load the background images
-    public void loadImages(){
+    public Picture [] loadImages(){
 
         for (int i=0;i<43;i++){
-           if(i<9){
-               background [i] = new Picture (PADDING,PADDING,"background/frame_0"+i+"_delay-0.04s.gif");
-           }else if(i<19){
-               background [i] = new Picture (PADDING,PADDING,"background/frame_1"+i+"_delay-0.04s.gif");
-           }else if (i<29){
-               background [i] = new Picture (PADDING,PADDING,"background/frame_2"+i+"_delay-0.04s.gif");
-           }else if (i<39){
-               background [i] = new Picture (PADDING,PADDING,"background/frame_3"+i+"_delay-0.04s.gif");
-           }else{
-               background [i] = new Picture (PADDING,PADDING,"background/frame_4"+i+"_delay-0.04s.gif");
+
+            Picture tempPicture;
+
+            if(i<10){
+               tempPicture = new Picture (PADDING,PADDING,"background/frame_0"+i+"_delay-0.04s.gif");
+           }else {
+                tempPicture = new Picture (PADDING,PADDING,"background/frame_"+i+"_delay-0.04s.gif");
            }
 
-
+            background[i]=tempPicture;
         }
 
-        //Load the picture for the moving ground
-        ground=new Picture(0,0,"moving_ground/moving_ground.png");
-
+        return background;
 
     }
 
@@ -42,6 +37,7 @@ public class UploadImages {
         //Loop to stores the images
         for (int i=0; i<player.length;i++){
             player[i]=new Picture(0,0,"player/0"+i+"-player.png");
+
         }
 
         return this.player;
