@@ -25,7 +25,8 @@ public class Menu implements KeyboardHandler{
 
         menu.draw();
         menu1.draw();
-
+        System.out.println("Menu: " + menu.getX() + " - " + menu.getMaxX());
+        System.out.println("Menu1: " + menu1.getX() + " - " + menu1.getMaxX());
 
     }
 
