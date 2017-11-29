@@ -1,6 +1,5 @@
 package org.academiadecodigo.bootcamp;
 
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -14,17 +13,19 @@ public class Menu implements KeyboardHandler{
     private Picture menu;
     private Picture menu1;
     private int startLevel=0;
-    private int roll=0;
+    private Picture player;
 
 
     //Calls the menu and create it in the constructor
     public Menu(){
         //MUDAR ISTO DEPOIS
-        this.menu=new Picture(0,UploadImages.PADDING,"background/java.png");
-        this.menu1=new Picture(menu.getMaxX(),UploadImages.PADDING,"background/java1.png");
+        this.menu=new Picture(0,UploadImages.PADDING,"background/background.gif");
+        this.menu1=new Picture(menu.getMaxX(),UploadImages.PADDING,"background/background.gif");
+        //this.player = new Picture(0,400, "characters/player/00-player.png");
 
         menu.draw();
         menu1.draw();
+        //player.draw();
         System.out.println("Menu: " + menu.getX() + " - " + menu.getMaxX());
         System.out.println("Menu1: " + menu1.getX() + " - " + menu1.getMaxX());
 
@@ -32,18 +33,14 @@ public class Menu implements KeyboardHandler{
 
     public void imageRoll(){
         if(menu.getX() < 810 && menu.getMaxX() > 0){
-            if(menu1.getMaxX() == 0){menu1.translate(960*2 - 10,0);}
+            if(menu1.getMaxX() <= 0){menu1.translate(menu.getWidth()*2 - 10,0);}
             menu.translate(-10,0);
             menu1.translate(-10,0);
         }else if(menu1.getX() < 810 && menu1.getMaxX() > 0){
-            if(menu.getMaxX() == 0){menu.translate(960*2 - 10,0);}
+            if(menu.getMaxX() <= 0){menu.translate(menu.getWidth()*2 - 10,0);}
             menu1.translate(-10,0);
             menu.translate(-10,0);
         }
-
-        System.out.println("Menu: " + menu.getX() + " - " + menu.getMaxX());
-        System.out.println("Menu1: " + menu1.getX() + " - " + menu1.getMaxX());
-
     }
 
 

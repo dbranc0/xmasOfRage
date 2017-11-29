@@ -31,12 +31,12 @@ public class UploadImages {
     }
 
 
-    //Load the player sprites
+    //Load the characters.player sprites
     public Picture [] loadPlayer(){
 
         //Loop to stores the images
         for (int i=0; i<player.length;i++){
-            player[i]=new Picture(0,0,"player/0"+i+"-player.png");
+            player[i]=new Picture(0,0, "characters/player/0" +i+"-characters.player.png");
 
         }
 
