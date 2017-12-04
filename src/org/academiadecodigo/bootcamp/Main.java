@@ -5,11 +5,8 @@ public class Main {
     public static void main(String[] args) throws InterruptedException{
 
         //Create the game object
-        Game game=new Game();
-
+        Game game = new Game();
         game.init();
-        game.start();
-
     }
 
 }

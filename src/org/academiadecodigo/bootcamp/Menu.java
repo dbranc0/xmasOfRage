@@ -8,56 +8,40 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Menu implements KeyboardHandler{
+public class Menu implements  KeyboardHandler{
 
     private Picture menu;
-    private Picture menu1;
     private int startLevel=0;
-    private Picture player;
+
 
 
     //Calls the menu and create it in the constructor
-    public Menu(){
-        //MUDAR ISTO DEPOIS
-        this.menu=new Picture(0,UploadImages.PADDING,"background/background.gif");
-        this.menu1=new Picture(menu.getMaxX(),UploadImages.PADDING,"background/background.gif");
-        //this.player = new Picture(0,400, "characters/player/00-player.png");
+    public void createScreen (boolean isMenu){
+        if (isMenu){
+            this.menu=new Picture(0,0,"background/menugame.png");
+            menu.draw();
 
-        menu.draw();
-        menu1.draw();
-        //player.draw();
+        }else{
+            this.menu=new Picture(0,0,"background/gameover.png");
+            menu.draw();
 
-    }
-
-    public void imageRoll(){
-        if(menu.getX() < 810 && menu.getMaxX() > 0){
-            if(menu1.getMaxX() <= 0){menu1.translate(menu.getWidth()*2 - 10,0);}
-            menu.translate(-10,0);
-            menu1.translate(-10,0);
-        }else if(menu1.getX() < 810 && menu1.getMaxX() > 0){
-            if(menu.getMaxX() <= 0){menu.translate(menu.getWidth()*2 - 10,0);}
-            menu1.translate(-10,0);
-            menu.translate(-10,0);
         }
     }
 
 
+
+
     //The key listner for the menu
     //Method to listen the keyboard
-    public void keyListener(){
+    public void keyListener() {
 
         Keyboard keyboard = new Keyboard(this);
 
-        KeyboardEvent  menu =new KeyboardEvent();
+        KeyboardEvent menu = new KeyboardEvent();
 
         menu.setKey(KeyboardEvent.KEY_SPACE);
         menu.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
         keyboard.addEventListener(menu);
-
-
-
-
     }
 
 
@@ -69,16 +53,18 @@ public class Menu implements KeyboardHandler{
 
 
     @Override
-    public void keyPressed(KeyboardEvent keyboardEvent){
+    public void keyPressed(KeyboardEvent keyboardEvent) {
+
 
         if(startLevel==0){
             switch(keyboardEvent.getKey()) {
                 case KeyboardEvent.KEY_SPACE:
-                    System.out.println("Hello Darkness");
-                    this.startLevel=1;
-                    Rectangle fade=new Rectangle(UploadImages.PADDING,UploadImages.PADDING,443,249);
+                    Rectangle fade=new Rectangle(0,0,800,600);
+                    fade.draw();
+
                     fade.setColor(Color.DARK_GRAY);
                     fade.fill();
+                    this.startLevel=1;
                     break;
             }
         }
@@ -91,6 +77,8 @@ public class Menu implements KeyboardHandler{
 
     }
 
-
+    public void setLevel() {
+        this.startLevel = 0;
+    }
 }
 
